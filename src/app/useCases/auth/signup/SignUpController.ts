@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 // import { validateUser } from '@helpers/validation';
-import { CreateUserUseCase } from './SignUpUseCase';
+import SignUpUseCase from './SignUpUseCase';
 
-export class CreateUserController {
+export class SignUpController {
     constructor(
-        private createUserUseCase: CreateUserUseCase
+        private signUpUseCase: SignUpUseCase
     ){}
 
     async handle (req: Request, res: Response): Promise<Response>{
@@ -13,7 +13,7 @@ export class CreateUserController {
         try {
             const result = await validateUser.validateAsync(req.body);
 
-            await this.createUserUseCase.execute({
+            await this.signUpUseCase.execute({
                 name,
                 email,
                 password,

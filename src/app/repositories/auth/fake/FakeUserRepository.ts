@@ -1,9 +1,9 @@
-import { User } from "@entities/user";
+import { User } from "@entities/User";
 import { IUserRepository } from '@repositories/auth/IUserRepository';
 import {v4 as uuidv4} from 'uuid';
 import SignUpDTO from '@useCases/auth/signup/SignUpDTO';
 
-export class UserRepository implements Omit<IUserRepository, 'signin'> {
+export default class FakeUserRepository implements Omit<IUserRepository, 'signin'> {
     private users: User[] = [];
 
    

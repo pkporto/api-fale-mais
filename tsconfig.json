@@ -14,7 +14,7 @@
       "@repositories/*": ["src/app/repositories/*"],
       "@useCases/*": ["src/app/useCases/*"],
       "@shared/*":["src/shared/*"],
-      "@helpers/*":["src/shared/helpers/*"]
+      "@helpers/*":["src/shared/helpers/*"],
     },
     "esModuleInterop": true,      
     "experimentalDecorators": true,             

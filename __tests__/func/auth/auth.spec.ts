@@ -1,7 +1,11 @@
-import { User } from "@entities/user";
+import { User } from "@entities/User";
+import FakeUserRepository from '@repositories/auth/fake/FakeUserRepository';
+import SignUpUseCase from '@useCases/auth/signup/SignUpUseCase';
 
 describe('Authentication', ()=>{
-    it('should authenticate with valid credentials', async () =>{
-        const user = await User.
-    })
+    it('should create a new user', async () =>{
+        const fakeUserRepository = new FakeUserRepository();
+    });
+
+    
 });

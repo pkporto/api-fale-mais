@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import auth_routes from './shared/routes/auth_route';
-import App_Error from './shared/helpers/app_error';
+import AppError from './shared/helpers/AppError';
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.use(
         response: Response,
         next: NextFunction,
     ) => {
-        if (error instanceof App_Error) {
+        if (error instanceof AppError) {
             console.log('error 9989');
             return response.status(error.statusCode).json({
                 status: 'error',

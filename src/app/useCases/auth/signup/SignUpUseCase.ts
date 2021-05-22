@@ -1,19 +1,31 @@
 import { getCustomRepository } from 'typeorm';
-import { User } from '@entities/user';
+import { User } from '@entities/User';
 import { UserRepository } from '../../../repositories/auth/implementations/userRepository';
-import { IUserRepository } from '../../../repositories/IUserRepository';
-import { ICreateUserRequestDTO} from './SignUpDTO';
+import { IUserRepository } from '@repositories/auth/models/IUserRepository';
+import ISignUpDTO from './SignUpDTO';
+import AppError from '@shared/helpers/AppError';
+import { inject, injectable } from 'tsyringe';
 
-export class CreateUserUseCase {
-    async execute(data: ICreateUserRequestDTO){
-        const usersRepository = getCustomRepository(UserRepository);
-        //Checking if it exists
-        const userAlreadyExists = await usersRepository.findByEmail(data.email); 
-        if(userAlreadyExists){
-            throw new Error('User already exists.');
-        }
+@injectable()
+export default class SignUpUseCase {
+  constructor(
+    @inject('UserRepository')
+    private userRepository: IUserRepository,
+  ) {}
 
-        const user = new User(data);
-        await usersRepository.save(user);
+  public async execute(data: ISignUpDTO): Promise<User> {
+    const emailExists = await this.userRepository.findByEmail(data.email);
+
+    if (emailExists) {
+      throw new AppError('Email address already used.');
     }
+    const user = new User();
+    user.email = data.email;
+    user.name = data.name;
+    user.password = data.password;
+    
+    const customer = await this.userRepository.signUp(user);
+
+    return customer;
+  }
 }

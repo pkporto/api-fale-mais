@@ -1,11 +1,11 @@
-import { CreateUserController } from "./SignUpController";
-import { CreateUserUseCase } from "./SignUpUseCase";
+import  SignUpController  from "./SignUpController";
+import  SignUpUseCase  from "./SignUpUseCase";
 
-const createUserUseCase = new CreateUserUseCase();
+const signUpUseCase = new SignUpUseCase();
 
-const createUserController = new CreateUserController(
-    createUserUseCase
+const signUpController = new SignUpController(
+    signUpUseCase
 );
 
 
-export { createUserController }
+export { signUpController }

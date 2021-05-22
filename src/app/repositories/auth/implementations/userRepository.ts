@@ -24,7 +24,7 @@ export class UserRepository implements IUserRepository {
         }
     }
 
-    async save(user: User): Promise<void> {
+    async signUp(user: User): Promise<User> {
         console.log(`save ${user.email}`);
 
         try {
