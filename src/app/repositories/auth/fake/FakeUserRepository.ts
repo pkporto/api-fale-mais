@@ -9,12 +9,12 @@ export default class FakeUserRepository implements Omit<IUserRepository, 'signin
    
     async findByEmail(email: string): Promise<User | undefined> {
         const user = this.users.find(user => user.email === email);
-        return user
+        return user;
     }
 
     async signUp(data: SignUpDTO): Promise<User> {
         const user = new User(data);
-
+        user.id= uuidv4();
         
         this.users.push(user);
 
