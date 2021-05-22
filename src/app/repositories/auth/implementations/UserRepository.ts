@@ -1,6 +1,6 @@
 import { EntityRepository, getRepository, Repository } from "typeorm";
-import { User } from "../../entities/User";
-import { IUserRepository } from '../IUserRepository';
+import { User } from "@entities/User";
+import { IUserRepository } from '@repositories/auth/models/IUserRepository';
 
 import bcrypt from 'bcrypt';
 
@@ -25,13 +25,19 @@ export class UserRepository implements IUserRepository {
     }
 
     async signUp(user: User): Promise<User> {
-        console.log(`save ${user.email}`);
+        // console.log(`save ${user.email}`);
 
-        try {
-            await getRepository(User).save(user);
-        } catch (error) {
-            console.log(error.message);
-        }
+        // try {
+        //    const userSaved = await getRepository(User).save(user);
+        //    return userSaved;
+        // } catch (error) {
+        //     console.log(error.message);
+        //     return undefined;
+
+        // }
+
+           this.ormRepository.save(user);
+           return user;
     }
 
     async signin(email: string, password: string): Promise<User | undefined> {

@@ -1,26 +1,33 @@
 {
   "compilerOptions": {
-    "target": "es5",                                
-    "module": "commonjs",                          
-    "lib": ["es6"],                                 
-    "allowJs": true,                               
-     "outDir": "build",                          
-        "rootDir": "src",                               
-    "strict": true,                                 
-    "noImplicitAny": true,                         
-    "baseUrl": "./",                             
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es6"],
+    "allowJs": true,
+    "outDir": "build",
+    "rootDir": "src",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": "./",
     "paths": {
       "@entities/*": ["src/app/entities/*"],
       "@repositories/*": ["src/app/repositories/*"],
       "@useCases/*": ["src/app/useCases/*"],
       "@shared/*":["src/shared/*"],
-      "@helpers/*":["src/shared/helpers/*"],
+      "@helpers/*":["src/shared/helpers/*"]
     },
-    "esModuleInterop": true,      
-    "experimentalDecorators": true,             
-     "emitDecoratorMetadata": true, 
-    "resolveJsonModule": true,                     
-     "skipLibCheck": true,                           
-    "forceConsistentCasingInFileNames": true,
+    "typeRoots": [
+      "@types",
+      "./node_modules/@types"
+    ],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
+
+

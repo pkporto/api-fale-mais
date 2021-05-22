@@ -1,23 +1,24 @@
 import { Request, Response } from 'express';
-// import { validateUser } from '@helpers/validation';
+import { validateUser } from '@helpers/Validation';
 import SignUpUseCase from './SignUpUseCase';
+import { container } from 'tsyringe';
 
-export class SignUpController {
+export default class SignUpController {
     constructor(
         private signUpUseCase: SignUpUseCase
     ){}
 
     async handle (req: Request, res: Response): Promise<Response>{
-        const { name, email, password, cpf } = req.body;
+        const { name, email, password } = req.body;
+        const useCase = container.resolve(SignUpUseCase);
 
         try {
             const result = await validateUser.validateAsync(req.body);
 
-            await this.signUpUseCase.execute({
+            await useCase.execute({
                 name,
                 email,
-                password,
-                cpf
+                password
             });
 
             return res.status(201).json({
