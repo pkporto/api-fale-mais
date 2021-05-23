@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 import { validateUser } from '@helpers/Validation';
 import SignUpUseCase from './SignUpUseCase';
-import { container } from 'tsyringe';
+import { container, delay } from 'tsyringe';
+import { IUserRepository } from '@repositories/auth/models/IUserRepository';
+import { UserRepository } from '@repositories/auth/implementations/UserRepository';
 
 export default class SignUpController {
     constructor(
@@ -10,11 +12,16 @@ export default class SignUpController {
 
     async handle (req: Request, res: Response): Promise<Response>{
         const { name, email, password } = req.body;
-        const useCase = container.resolve(SignUpUseCase);
+        container.register('UserRepository', { useValue: UserRepository });
+         const useCase = container.resolve(SignUpUseCase);
+        // container.registerSingleton<IUserRepository>(
+        //     'IUserRepository',
+        //     delay(() => UserRepository),
+        //   );
 
         try {
             const result = await validateUser.validateAsync(req.body);
-
+            console.log(result);
             await useCase.execute({
                 name,
                 email,

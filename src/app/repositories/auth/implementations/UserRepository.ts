@@ -8,7 +8,7 @@ import bcrypt from 'bcrypt';
 export class UserRepository implements IUserRepository {
     private ormRepository: Repository<User>;
     constructor(){
-        this.ormRepository = getRepository(User);
+        // this.ormRepository =  getRepository(User);
     }
     async findByEmail(email: string): Promise<User | undefined> {
         try {
@@ -36,7 +36,8 @@ export class UserRepository implements IUserRepository {
 
         // }
 
-           this.ormRepository.save(user);
+        await getRepository(User).save(user);
+        //    this.ormRepository.save(user);
            return user;
     }
 

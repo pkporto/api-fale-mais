@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
-import auth_routes from './shared/routes/auth_route';
+import authRoutes from './shared/routes/AuthRoutes';
 import AppError from './shared/helpers/AppError';
 
 const app = express();
@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 //Routes
-app.use(auth_routes);
+app.use(authRoutes);
 
 //Middleware to handle errors
 app.use(
