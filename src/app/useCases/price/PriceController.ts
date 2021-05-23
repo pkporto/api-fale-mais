@@ -18,11 +18,12 @@ export default class PriceController {
         let origin,
          destiny,
         time,
-        price;
-        if(req.query && req.query.origin && req.query.destiny && req.query.time && req.query.price){
+        plan;
+        if(req.query && req.query.origin && req.query.destiny && req.query.time && req.query.plan){
              origin = (req.query as any).origin;
              destiny = (req.query as any).destiny;
              time = (req.query as any).time;
+             plan = (req.query as any).plan;
         }
         
         try {
@@ -31,7 +32,8 @@ export default class PriceController {
            const price = await this.priceUseCase.execute(
                origin, 
                destiny, 
-               time
+               time,
+               plan
             );
 
             return res.status(201).json({
