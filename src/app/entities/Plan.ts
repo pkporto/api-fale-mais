@@ -1,18 +1,15 @@
 import { Entity,Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('Plan')
-export class Plan {
+export default class Plan {
     @PrimaryGeneratedColumn('uuid')
     id!: string;
     
     @Column()
-    origin!: number;
+    name!: string;
 
     @Column()
-    destiny!: number;
-
-    @Column('decimal')
-    price!: number;
+    minutes!: number;
 
     // constructor(
     //     params: { name: string;password: string },

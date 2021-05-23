@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import authRoutes from './shared/routes/AuthRoutes';
 import AppError from './shared/helpers/AppError';
+import priceRoutes from '@shared/routes/PriceRoutes';
 
 const app = express();
 
@@ -12,7 +13,11 @@ app.use(cors());
 app.use(express.json());
 
 //Routes
+
+
 app.use(authRoutes);
+app.use(priceRoutes);
+
 
 //Middleware to handle errors
 app.use(
@@ -38,5 +43,6 @@ app.use(
         });
     },
 );
+
 
 export default app;
