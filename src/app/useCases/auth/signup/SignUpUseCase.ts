@@ -4,17 +4,17 @@ import { IUserRepository } from '@repositories/auth/models/IUserRepository';
 import ISignUpDTO from './SignUpDTO';
 import AppError from '@shared/helpers/AppError';
 import { inject, injectable } from 'tsyringe';
+import { UserRepository } from '@repositories/auth/implementations/UserRepository';
 
 @injectable()
 export default class SignUpUseCase {
   constructor(
-    @inject('UserRepository')
-    private userRepository: IUserRepository,
+    private userRepository: UserRepository,
   ) {}
 
   public async execute(data: ISignUpDTO): Promise<User> {
     const emailExists = await this.userRepository.findByEmail(data.email);
-
+    console.log(emailExists);
     if (emailExists) {
       throw new AppError('Email address already used.');
     }
