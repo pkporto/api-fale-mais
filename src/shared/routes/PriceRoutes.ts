@@ -4,6 +4,7 @@ const priceRoutes = Router();
 
 
 priceRoutes.get('/calculate', (req: Request, res: Response)=>{
+    console.log('calculate routes');
     return priceController.handle(req,res);
     // return res.send('Rota iniciddaldadsadsda');
 })

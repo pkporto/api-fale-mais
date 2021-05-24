@@ -20,16 +20,19 @@ export default class PriceUseCase {
 
     console.log(minutesPlan.minutes);
     let valueWithoutPlan: number = 0;
-    let valeWithPlan: number = 0;
+    let valueWithPlan: number = 0;
 
     valueWithoutPlan = price.price * time;
 
 
 
-    valeWithPlan = this.calculate(minutesPlan.minutes, time, price.price);
+    valueWithPlan = this.calculate(minutesPlan.minutes, time, price.price);
 
-    console.log(valeWithPlan.toFixed(2), valueWithoutPlan);
-    return `O valor da ligação sem plano é ${valueWithoutPlan}, usando o plano ${minutesPlan.name} o valor é de ${valeWithPlan} `;
+    if(valueWithPlan <= 0){
+      valueWithPlan = 0;
+    }
+    // console.log(valeWithPlan.toFixed(2), valueWithoutPlan);
+    return `O valor da ligação sem plano é ${valueWithoutPlan}, usando o plano R$${minutesPlan.name} o valor é de R$${valueWithPlan.toFixed(2)}`;
   }
 
   calculate (planMinutes: number, timeSpeaking: number, planPrice: number){

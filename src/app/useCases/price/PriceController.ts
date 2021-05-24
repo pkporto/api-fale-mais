@@ -37,8 +37,9 @@ export default class PriceController {
             );
 
             return res.status(201).json({
-                status: 201,
-                message: price
+                cod: 201,
+                message: 'Resultado:', 
+                data: price
             });
         } catch (error) {
             return res.status(400).json({

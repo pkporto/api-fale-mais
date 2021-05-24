@@ -6,7 +6,6 @@ import bcrypt from 'bcrypt';
 
 @EntityRepository(User)
 export class UserRepository implements IUserRepository {
-    private ormRepository: Repository<User>;
     constructor(){
         // this.ormRepository =  getRepository(User);
     }
@@ -25,17 +24,6 @@ export class UserRepository implements IUserRepository {
     }
 
     async signUp(user: User): Promise<User> {
-        // console.log(`save ${user.email}`);
-
-        // try {
-        //    const userSaved = await getRepository(User).save(user);
-        //    return userSaved;
-        // } catch (error) {
-        //     console.log(error.message);
-        //     return undefined;
-
-        // }
-
         await getRepository(User).save(user);
         //    this.ormRepository.save(user);
            return user;

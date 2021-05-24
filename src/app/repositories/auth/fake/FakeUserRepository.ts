@@ -22,6 +22,14 @@ export default class FakeUserRepository implements Omit<IUserRepository, 'signin
     }
 
     async signin(email: string, password: string): Promise<User | undefined> {
+
+        const list= [
+            {
+                "patrickporto.dev@gmail.com":"$2b$05$lTjEKPgXYLduI1TDe3Oh1.ua/528Rw8jQyFyOJ8jLkjjRc4c2AW8a"
+            }
+        ]
+
+       
         return undefined;
     }
 }

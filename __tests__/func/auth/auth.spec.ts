@@ -1,10 +1,11 @@
 import { User } from "@entities/User";
 import FakeUserRepository from '@repositories/auth/fake/FakeUserRepository';
 import SignUpUseCase from '@useCases/auth/signup/SignUpUseCase';
+import SignInUseCase from '@useCases/auth/signin/SignInUseCase';
 
 let fakeUserRepository: FakeUserRepository;
 let signUp: SignUpUseCase;
-
+let signIn: SignInUseCase;
 describe('Authentication', ()=>{
     beforeEach(() => {
         fakeUserRepository = new FakeUserRepository();
@@ -22,4 +23,18 @@ describe('Authentication', ()=>{
         expect(user).toHaveProperty('id');
 
     });
+
+    it('should login, async', async () =>{
+       
+        const user1 = await signIn.execute({
+            email: 'patrick.porto',
+            password: '21212323'
+        });
+
+        expect(user1);
+
+    });
+
+
+
 });
