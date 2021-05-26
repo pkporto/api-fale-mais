@@ -6,6 +6,6 @@ import app from "./server";
 
 
 
-app.listen(7777 || process.env.PORT , ()=>{
+app.listen(process.env.PORT || 7777  , ()=>{
     console.log('Running on 7777');
 });
