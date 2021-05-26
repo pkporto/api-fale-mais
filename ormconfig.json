@@ -1,0 +1,20 @@
+{
+    "type": "postgres",
+    "host": "ec2-52-21-153-207.compute-1.amazonaws.com",
+    "port": 5432,
+    "url":"postgres://esaerltbzsvhrl:9f7f6fcccf8184200b8b5884c1002b9f288b31260015cb5a5ac1a9c2cb781e5a@ec2-52-21-153-207.compute-1.amazonaws.com:5432/d3j8v59v92it8m",
+    "username": "esaerltbzsvhrl",
+    "password": "9f7f6fcccf8184200b8b5884c1002b9f288b31260015cb5a5ac1a9c2cb781e5a",
+    "database": "d3j8v59v92it8m",
+    "entities": ["./dist/app/entities/*.js"],
+    "migrations": [
+      "./dist/shared/typeorm/migrations/*.js"
+    ],
+    "cli": {
+      "migrationsDir": "./dist/shared/typeorm/migrations"
+    },
+    "ssl": {
+        "rejectUnauthorized": false
+      }
+    
+  }
