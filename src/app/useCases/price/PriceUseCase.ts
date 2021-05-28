@@ -32,7 +32,7 @@ export default class PriceUseCase {
       valueWithPlan = 0;
     }
     // console.log(valeWithPlan.toFixed(2), valueWithoutPlan);
-    return `O valor da ligação sem plano é R$${valueWithoutPlan.toFixed}, usando o plano ${minutesPlan.name} o valor é de R$${valueWithPlan.toFixed(2)}`;
+    return `O valor da ligação sem plano é R$${valueWithoutPlan.toFixed(2)}, usando o plano ${minutesPlan.name} o valor é de R$${valueWithPlan.toFixed(2)}`;
   }
 
   calculate (planMinutes: number, timeSpeaking: number, planPrice: number){
