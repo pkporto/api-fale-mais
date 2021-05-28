@@ -14,9 +14,9 @@ class SignInUseCase {
     console.log('entrou no usecase');
     const userExists = await this.usersRepository.findByEmail(data.email);
      console.log(userExists); 
-    if (!userExists) {
-      throw new Error("User don't exists.");
-    } // console.log(`login useruscase  ${userExists}`)
+    // if (!userExists) {
+    //   // throw new Error("User don't exists.");
+    // } // console.log(`login useruscase  ${userExists}`)
 
 
     const usuario = await this.usersRepository.signin(data.email, data.password);
